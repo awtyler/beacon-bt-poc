@@ -106,6 +106,7 @@ extension Scanner: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         foundDevices.append(peripheral)
+        peripheralIds.insert(peripheral.identifier)
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {

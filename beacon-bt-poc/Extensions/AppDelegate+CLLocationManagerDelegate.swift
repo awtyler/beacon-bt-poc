@@ -19,7 +19,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 //            self.logger?.write("Scanning for new devices...")
 //            Scanner.shared.scanForDevices(forSeconds: 2, completion: { result in
                 self.logger?.write("Connecting to known devices...")
-                Scanner.shared.connectToKnownPeripherals()
+                BLEScanner.shared.connectToKnownPeripherals()
 //            })
         }
     }

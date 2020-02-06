@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
         logger?.write("Ready")
         
-        let _ = Scanner.shared
+        let _ = BLEScanner.shared
         
         if !MultiLogger.shared.hasLogger(identifier: "vc") {
             MultiLogger.shared.addLogger(logger: self, identifier: "vc")
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
     @IBAction func button1Action(_ sender: Any) {
         logger?.write("Scanning for 2s...")
         DispatchQueue.global(qos: .background).async {
-            Scanner.shared.scanForDevices(forSeconds: 2) { (result) in
+            BLEScanner.shared.scanForDevices(forSeconds: 2) { (result) in
                 switch result {
                 case let .success(peripherals):
                     self.logger?.write("Found \(peripherals.count) devices.")
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
 
     @IBAction func button4Action(_ sender: Any) {
         logger?.write("Connecting to known peripherals for 2s...")
-        Scanner.shared.connectToKnownPeripherals()
+        BLEScanner.shared.connectToKnownPeripherals()
     }
     
     @IBAction func button5Action(_ sender: Any) {

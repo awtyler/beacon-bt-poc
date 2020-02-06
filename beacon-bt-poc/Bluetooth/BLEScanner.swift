@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-enum ScannerError: Error {
+enum BLEScannerError: Error {
     case NotConnectedError
     case PeripheralNotFoundError
     case UnableToConnectToPeripheralError
@@ -23,9 +23,9 @@ enum ScannerError: Error {
     }
 }
 
-class Scanner: NSObject {
+class BLEScanner: NSObject {
     
-    static var shared: Scanner = Scanner()
+    static var shared: BLEScanner = BLEScanner()
     
     private var centralManager: CBCentralManager!
     private var logger = Constants.logger
@@ -41,7 +41,7 @@ class Scanner: NSObject {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
 
-    func scanForDevices(forSeconds seconds: TimeInterval, completion: @escaping (Result<[CBPeripheral], ScannerError>) -> Void) {
+    func scanForDevices(forSeconds seconds: TimeInterval, completion: @escaping (Result<[CBPeripheral], BLEScannerError>) -> Void) {
         
         guard centralManager.state == .poweredOn else {
             completion(.failure(.NotConnectedError))
@@ -74,7 +74,7 @@ class Scanner: NSObject {
         
     }
     
-    func connectToPeripheral(withUuid uuid: UUID, completion: @escaping (Result<Void, ScannerError>) -> Void) {
+    func connectToPeripheral(withUuid uuid: UUID, completion: @escaping (Result<Void, BLEScannerError>) -> Void) {
 
         guard centralManager.state == .poweredOn else {
             completion(.failure(.NotConnectedError))
@@ -102,7 +102,7 @@ class Scanner: NSObject {
 }
 
 
-extension Scanner: CBCentralManagerDelegate {
+extension BLEScanner: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         foundDevices.append(peripheral)

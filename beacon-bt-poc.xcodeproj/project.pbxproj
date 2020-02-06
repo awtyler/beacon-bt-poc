@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9336609923EB1E6B0000A81E /* URL+postAndForget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9336609823EB1E6B0000A81E /* URL+postAndForget.swift */; };
-		9336609C23EB26630000A81E /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9336609B23EB26630000A81E /* Scanner.swift */; };
+		9336609C23EB26630000A81E /* BLEScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9336609B23EB26630000A81E /* BLEScanner.swift */; };
 		9336609E23EB28530000A81E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9336609D23EB28530000A81E /* Constants.swift */; };
 		933660A023EB473F0000A81E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9336609F23EB473F0000A81E /* Storage.swift */; };
 		933660A223EB550A0000A81E /* AppDelegate+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933660A123EB550A0000A81E /* AppDelegate+CLLocationManagerDelegate.swift */; };
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		9336609823EB1E6B0000A81E /* URL+postAndForget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+postAndForget.swift"; sourceTree = "<group>"; };
-		9336609B23EB26630000A81E /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		9336609B23EB26630000A81E /* BLEScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScanner.swift; sourceTree = "<group>"; };
 		9336609D23EB28530000A81E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9336609F23EB473F0000A81E /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		933660A123EB550A0000A81E /* AppDelegate+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		9336609A23EB26530000A81E /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				9336609B23EB26630000A81E /* Scanner.swift */,
+				9336609B23EB26630000A81E /* BLEScanner.swift */,
 				933660A723EB570C0000A81E /* BeaconScanner.swift */,
 			);
 			path = Bluetooth;
@@ -275,7 +275,7 @@
 				936D81F023A2F69E008A1C64 /* SceneDelegate.swift in Sources */,
 				933660A223EB550A0000A81E /* AppDelegate+CLLocationManagerDelegate.swift in Sources */,
 				933660A023EB473F0000A81E /* Storage.swift in Sources */,
-				9336609C23EB26630000A81E /* Scanner.swift in Sources */,
+				9336609C23EB26630000A81E /* BLEScanner.swift in Sources */,
 				933660AA23EB58120000A81E /* BeaconParameters.swift in Sources */,
 				936D821123A2F75E008A1C64 /* Logger.swift in Sources */,
 				9336609E23EB28530000A81E /* Constants.swift in Sources */,
@@ -370,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -441,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQZ9HX53KV;
 				INFOPLIST_FILE = "beacon-bt-poc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,7 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQZ9HX53KV;
 				INFOPLIST_FILE = "beacon-bt-poc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

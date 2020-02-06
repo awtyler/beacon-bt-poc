@@ -31,7 +31,13 @@ struct BeaconParameters: Codable {
         
         let rMajor = region.major
         let rMinor = region.minor
-        let rUuid = region.proximityUUID
+        
+        var rUuid: UUID? = nil
+        if #available(iOS 13.0, *) {
+            rUuid = region.uuid
+        } else {
+            rUuid = region.proximityUUID
+        }
         
         if rUuid == uuid && rMajor == major as NSNumber? && rMinor == minor as NSNumber?  {
             return true

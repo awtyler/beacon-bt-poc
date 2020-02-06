@@ -95,7 +95,12 @@ class BeaconScanner: NSObject {
     }
     
     func startScanning(forBeacon beacon: BeaconParameters) {
-        let beaconRegion = CLBeaconRegion(proximityUUID: beacon.uuid, major: beacon.major, minor: beacon.minor, identifier: beacon.identifier ?? beacon.description)
+        var beaconRegion: CLBeaconRegion! = nil
+        if #available(iOS 13.0, *) {
+            beaconRegion = CLBeaconRegion(uuid: beacon.uuid, major: beacon.major, minor: beacon.minor, identifier: beacon.identifier ?? beacon.description)
+        } else {
+            beaconRegion = CLBeaconRegion(proximityUUID: beacon.uuid, major: beacon.major, minor: beacon.minor, identifier: beacon.identifier ?? beacon.description)
+        }
         beaconRegion.notifyEntryStateOnDisplay = true
         
         if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {

@@ -41,7 +41,7 @@ class BeaconScanner: NSObject {
 //               BeaconParameters(uuid: UUID(uuidString: "1F48215E-DFF1-41C1-8656-CD5D0E06A76D")!, major: 1, minor: 6, identifier: "M1"),
     ]
     
-    func startScanning() {
+    func startMonitoring() {
         logger?.write("Starting to monitor for beacons. Currently Status: ")
         logStatus()
         
@@ -49,7 +49,7 @@ class BeaconScanner: NSObject {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             logger?.write("Monitor for beacons authorized with status: \(status.description)")
             for beacon in beacons {
-                startScanning(forBeacon: beacon)
+                startMonitoring(forBeacon: beacon)
             }
         } else {
             logger?.write("Not authorized to range/monitor for beacons, with status: \(status.description)")
@@ -83,7 +83,7 @@ class BeaconScanner: NSObject {
         return false
     }
     
-    func stopScanning() {
+    func stopMonitoring() {
         logger?.write("Monitoring stopping...")
         
         for region in locationManager.monitoredRegions {
@@ -94,14 +94,13 @@ class BeaconScanner: NSObject {
         logger?.write("Monitoring stopped.")
     }
     
-    func startScanning(forBeacon beacon: BeaconParameters) {
+    func startMonitoring(forBeacon beacon: BeaconParameters) {
         var beaconRegion: CLBeaconRegion! = nil
         if #available(iOS 13.0, *) {
             beaconRegion = CLBeaconRegion(uuid: beacon.uuid, major: beacon.major, minor: beacon.minor, identifier: beacon.identifier ?? beacon.description)
         } else {
             beaconRegion = CLBeaconRegion(proximityUUID: beacon.uuid, major: beacon.major, minor: beacon.minor, identifier: beacon.identifier ?? beacon.description)
         }
-        beaconRegion.notifyEntryStateOnDisplay = true
         
         if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
             Constants.logger?.write("Monitoring for beacon: {uuid: \(beacon.uuid.uuidString.prefix(8)), major: \(beacon.major), minor: \(beacon.minor), identifier: \(beacon.identifier ?? "nil")}")

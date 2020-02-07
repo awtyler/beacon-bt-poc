@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         BeaconScanner.shared.configure(locationManagerDelegate: self)
         
+        BeaconScanner.shared.startMonitoring()
+        
         return true
     }
 

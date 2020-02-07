@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     
@@ -14,9 +15,10 @@ struct Constants {
     
     static var logger: Logger? {
         if MultiLogger.shared.loggerList.count == 0 {
+            let deviceUuid = UIDevice.current.identifierForVendor
             MultiLogger.shared.addLoggers(loggers: [
                 "console": ConsoleLogger(),
-                "web": WebLogger(logName: "beacon-bt-poc", url: URL(string: "https://logger.tylerinternet.com/Log")!)
+                "web": WebLogger(logName: "beacon-bt-poc-\(deviceUuid?.uuidString.prefix(8) ?? "nil")", url: URL(string: "https://logger.tylerinternet.com/Log")!)
             ], clearAll: true)
             return MultiLogger.shared
         }
